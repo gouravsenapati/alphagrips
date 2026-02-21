@@ -9,6 +9,13 @@ import crypto from "crypto";
 
 dotenv.config();
 
+console.log("ENV CHECK:");
+console.log("SUPABASE_URL:", process.env.SUPABASE_URL ? "OK" : "MISSING");
+console.log("SUPABASE_KEY:", process.env.SUPABASE_KEY ? "OK" : "MISSING");
+console.log("JWT_SECRET:", process.env.JWT_SECRET ? "OK" : "MISSING");
+console.log("RAZORPAY_KEY_ID:", process.env.RAZORPAY_KEY_ID ? "OK" : "MISSING");
+console.log("RAZORPAY_KEY_SECRET:", process.env.RAZORPAY_KEY_SECRET ? "OK" : "MISSING");
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -1007,3 +1014,4 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
+
