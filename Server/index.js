@@ -48,7 +48,7 @@ const razorpay = new Razorpay({
 
 /* SERVER */
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
   res.send("AlphaGrips API Running");
@@ -58,6 +58,6 @@ app.get("/health", (req, res) => {
   res.send("OK");
 });
 
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
