@@ -1,4 +1,4 @@
-const API = window.location.origin;
+const API = "https://alphagrips-production.up.railway.app";
 
 // ============================
 // SIMPLE ROUTER SYSTEM
@@ -1652,5 +1652,6 @@ async function init() {
   // 5️⃣ Load default module
   loadModule("dashboard");
 }
+
 
 document.addEventListener("DOMContentLoaded", init);
