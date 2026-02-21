@@ -19,6 +19,10 @@ console.log("RAZORPAY_KEY_SECRET:", process.env.RAZORPAY_KEY_SECRET ? "OK" : "MI
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.get("/test", (req,res)=>{
+res.send("Server OK");
+});
+
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -1029,6 +1033,7 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
+
 
 
 
