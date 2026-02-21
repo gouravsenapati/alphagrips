@@ -989,7 +989,13 @@ app.post("/verify-payment", auth, async (req, res) => {
    Razorpay Webhooks (TO BE IMPLEMENTED)
 ====================== */
 
+/* ======================
+   HEALTH CHECK + ROOT
+====================== */
 
+app.get("/", (req, res) => {
+  res.send("AlphaGrips API Running");
+});
 
 
 /* ======================
@@ -999,4 +1005,5 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+
 });
