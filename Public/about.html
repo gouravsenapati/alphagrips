@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Us – AlphaGrips Badminton Academy</title>
 
 <style>
 
-:root {
-  --primary:#2563eb;
-  --dark:#0f172a;
-  --light:#f8fafc;
-  --text-dark:#1e293b;
-  --text-light:#64748b;
+:root{
+--primary:#2563eb;
+--dark:#0f172a;
+--light:#f8fafc;
+--text-dark:#1e293b;
+--text-light:#64748b;
 }
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:"Segoe UI",Arial,sans-serif;
+font-family:"Segoe UI",Arial;
 }
 
 body{
@@ -27,8 +28,6 @@ background:white;
 color:var(--text-dark);
 overflow-x:hidden;
 }
-
-/* CONTAINER */
 
 .container{
 max-width:1200px;
@@ -43,7 +42,7 @@ background:white;
 box-shadow:0 4px 12px rgba(0,0,0,0.05);
 position:sticky;
 top:0;
-z-index:100;
+z-index:1000;
 }
 
 .nav-inner{
@@ -56,8 +55,6 @@ padding:18px 0;
 .navbar img{
 height:55px;
 }
-
-/* MENU */
 
 nav{
 display:flex;
@@ -78,13 +75,14 @@ padding:8px 14px;
 border-radius:6px;
 }
 
-/* HAMBURGER */
+/* BURGER */
 
 .menu-btn{
 display:none;
 font-size:28px;
 cursor:pointer;
 }
+
 
 /* HERO */
 
@@ -97,7 +95,6 @@ background-position:center;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
 color:white;
 }
 
@@ -126,7 +123,7 @@ color:var(--text-light);
 margin-bottom:20px;
 }
 
-/* CARDS */
+/* GRID */
 
 .grid{
 display:flex;
@@ -141,10 +138,6 @@ padding:30px;
 border-radius:12px;
 box-shadow:0 8px 24px rgba(0,0,0,0.05);
 text-align:center;
-}
-
-.card h3{
-margin-bottom:15px;
 }
 
 /* FOOTER */
@@ -175,56 +168,101 @@ justify-content:center;
 width:100%;
 }
 
-.footer-info p{
-color:#cbd5e1;
-margin-bottom:6px;
+/* OVERLAY */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+display:none;
+z-index:9998;
 }
+
+.overlay.show{
+display:block;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+position:fixed;
+top:0;
+right:0;
+width:300px;
+height:100vh;
+background:white;
+z-index:9999;
+transform:translateX(300px);
+transition:0.35s;
+box-shadow:-6px 0 25px rgba(0,0,0,0.25);
+overflow:auto;
+}
+
+.mobile-menu.show{
+transform:translateX(0);
+}
+
+.menu-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+border-bottom:1px solid #eee;
+}
+
+.menu-header img{
+height:40px;
+}
+
+.close-btn{
+font-size:26px;
+cursor:pointer;
+}
+
+.mobile-menu a{
+display:block;
+padding:16px 20px;
+border-bottom:1px solid #eee;
+text-decoration:none;
+color:#1e293b;
+}
+
+.mobile-menu .login{
+margin:20px;
+background:#2563eb;
+color:white;
+text-align:center;
+border-radius:6px;
+padding:12px;
+}
+
 
 /* MOBILE */
 
 @media(max-width:900px){
 
-/* NAVBAR */
+nav{
+display:none;
+}
 
 .menu-btn{
 display:block;
 }
 
-nav{
-display:none;
-flex-direction:column;
-width:100%;
-margin-top:15px;
-}
-
-nav.show{
-display:flex;
-}
-
-nav a{
-padding:14px;
-border-bottom:1px solid #eee;
-width:100%;
-text-align:center;
-}
-
-/* HERO */
-
-.hero h1{
-font-size:30px;
-}
-
-/* SINGLE COLUMN */
-
 .grid{
 flex-direction:column;
 }
 
-/* FOOTER */
-
 .footer-wrapper{
 flex-direction:column;
 text-align:center;
+}
+
+.hero h1{
+font-size:30px;
 }
 
 }
@@ -234,16 +272,21 @@ text-align:center;
 
 <body>
 
+
+<!-- OVERLAY -->
+
+<div class="overlay" id="overlay"></div>
+
+
 <header class="navbar">
+
 <div class="container nav-inner">
 
 <img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png">
 
-<div class="menu-btn" onclick="toggleMenu()">
-☰
-</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<nav id="menu">
+<nav>
 
 <a href="index.html">Home</a>
 <a href="about.html">About Us</a>
@@ -253,16 +296,48 @@ text-align:center;
 <a href="news.html">News</a>
 <a href="achievements.html">Achievements</a>
 <a href="contact.html">Contact Us</a>
+
 <a href="login.html" class="login">Login</a>
 
 </nav>
 
 </div>
+
 </header>
+
+
+
+<!-- MOBILE MENU -->
+
+<div class="mobile-menu" id="menu">
+
+<div class="menu-header">
+
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png">
+
+<div class="close-btn" onclick="toggleMenu()">✕</div>
+
+</div>
+
+<a href="index.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="players.html">Our Players</a>
+<a href="arena.html">Our Arena</a>
+<a href="programs.html">Training Programs</a>
+<a href="news.html">News</a>
+<a href="achievements.html">Achievements</a>
+<a href="contact.html">Contact Us</a>
+
+<a href="login.html" class="login">Login</a>
+
+</div>
+
+
 
 <section class="hero">
 <h1>About AlphaGrips Academy</h1>
 </section>
+
 
 <section class="section">
 
@@ -283,30 +358,27 @@ to build complete athletes capable of excelling
 at state and national levels.
 </p>
 
+
 <div class="grid">
 
 <div class="card">
 <h3>Our Mission</h3>
 <p>
-To nurture disciplined, technically sound
-and mentally resilient athletes
-through structured development.
+To nurture disciplined athletes through structured development.
 </p>
 </div>
 
 <div class="card">
 <h3>Our Vision</h3>
 <p>
-To become a premier badminton academy
-recognized for producing champions.
+To become a premier badminton academy producing champions.
 </p>
 </div>
 
 <div class="card">
 <h3>Our Philosophy</h3>
 <p>
-Structured progression and measurable
-performance drive sustainable growth.
+Structured progression drives sustainable growth.
 </p>
 </div>
 
@@ -316,6 +388,7 @@ performance drive sustainable growth.
 
 </section>
 
+
 <footer class="footer">
 
 <div class="container footer-wrapper">
@@ -324,20 +397,17 @@ performance drive sustainable growth.
 <img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png">
 </div>
 
-<div class="footer-info">
+<div>
 
-<h3>AlphaGrips Badminton Academy</h3>
+AlphaGrips Badminton Academy
 
-<p>
-WH2W+FR3 Rose Garden Rd<br>
-Anthappa Layout Phase 4<br>
-Panduranga Nagar<br>
-Bengaluru 560076
-</p>
+<br><br>
 
-<p><b>Contact:</b> +91 70132 18442</p>
+Contact: +91 70132 18442
 
-<p><b>Email:</b> alphagripsacademy@gmail.com</p>
+<br>
+
+alphagripsacademy@gmail.com
 
 </div>
 
@@ -345,13 +415,28 @@ Bengaluru 560076
 
 </footer>
 
+
 <script>
 
+const menu=document.getElementById("menu");
+const overlay=document.getElementById("overlay");
+
 function toggleMenu(){
-document.getElementById("menu").classList.toggle("show");
+
+menu.classList.toggle("show");
+overlay.classList.toggle("show");
+
+}
+
+overlay.onclick=function(){
+
+menu.classList.remove("show");
+overlay.classList.remove("show");
+
 }
 
 </script>
+
 
 </body>
 </html>

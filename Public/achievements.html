@@ -55,6 +55,80 @@ font-size:28px;
 cursor:pointer;
 }
 
+
+/* ===== MOBILE OVERLAY (ADDED) ===== */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+display:none;
+z-index:9998;
+}
+
+.overlay.show{
+display:block;
+}
+
+
+/* ===== MOBILE MENU (ADDED) ===== */
+
+.mobile-menu{
+position:fixed;
+top:0;
+right:0;
+width:300px;
+height:100vh;
+background:white;
+z-index:9999;
+transform:translateX(300px);
+transition:0.35s;
+box-shadow:-6px 0 25px rgba(0,0,0,0.25);
+overflow:auto;
+}
+
+.mobile-menu.show{
+transform:translateX(0);
+}
+
+.menu-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+border-bottom:1px solid #eee;
+}
+
+.menu-header img{
+height:40px;
+}
+
+.close-btn{
+font-size:26px;
+cursor:pointer;
+}
+
+.mobile-menu a{
+display:block;
+padding:16px 20px;
+border-bottom:1px solid #eee;
+text-decoration:none;
+color:#1e293b;
+}
+
+.mobile-menu .login{
+margin:20px;
+background:#2563eb;
+color:white;
+text-align:center;
+border-radius:6px;
+padding:12px;
+}
+
+
 /* ===== Page Header ===== */
 
 .page-header{
@@ -71,6 +145,7 @@ margin-bottom:10px;
 color:#555;
 font-size:18px;
 }
+
 
 /* ===== Gallery ===== */
 
@@ -113,6 +188,7 @@ transform:translateY(0);
 transform:scale(1.03);
 box-shadow:0 15px 35px rgba(0,0,0,0.15);
 }
+
 
 /* ===== Footer ===== */
 
@@ -164,6 +240,7 @@ transform:translateY(-3px);
 opacity:0.85;
 }
 
+
 /* ===== MOBILE RESPONSIVE ===== */
 
 @media(max-width:900px){
@@ -172,26 +249,8 @@ opacity:0.85;
 display:block;
 }
 
-.nav-inner{
-padding:15px 30px;
-}
-
 .navbar nav{
 display:none;
-flex-direction:column;
-width:100%;
-margin-top:15px;
-}
-
-.navbar nav.show{
-display:flex;
-}
-
-.navbar nav a{
-padding:14px;
-border-bottom:1px solid #eee;
-text-align:center;
-margin-left:0;
 }
 
 .footer-wrapper{
@@ -210,7 +269,9 @@ justify-content:center;
 
 <body>
 
-<!-- ===== NAVIGATION ===== -->
+
+<div class="overlay" id="overlay"></div>
+
 
 <header class="navbar">
 
@@ -223,7 +284,7 @@ style="height:50px;">
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<nav id="menu">
+<nav>
 
 <a href="index.html">Home</a>
 <a href="about.html">About Us</a>
@@ -236,6 +297,31 @@ style="height:50px;">
 <a href="login.html" class="login">Login</a>
 
 </nav>
+
+</div>
+
+</header>
+
+
+<div class="mobile-menu" id="menu">
+
+<div class="menu-header">
+
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png">
+
+<div class="close-btn" onclick="toggleMenu()">✕</div>
+
+</div>
+
+<a href="index.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="players.html">Our Players</a>
+<a href="arena.html">Our Arena</a>
+<a href="programs.html">Training Programs</a>
+<a href="news.html">News</a>
+<a href="achievements.html">Achievements</a>
+<a href="contact.html">Contact Us</a>
+<a href="login.html" class="login">Login</a>
 
 </div>
 
@@ -323,8 +409,17 @@ fill="white">
 
 <script>
 
+const menu=document.getElementById("menu");
+const overlay=document.getElementById("overlay");
+
 function toggleMenu(){
-document.getElementById("menu").classList.toggle("show");
+menu.classList.toggle("show");
+overlay.classList.toggle("show");
+}
+
+overlay.onclick=function(){
+menu.classList.remove("show");
+overlay.classList.remove("show");
 }
 
 console.log("SCRIPT STARTED");
