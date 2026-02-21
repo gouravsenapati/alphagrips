@@ -1,4 +1,7 @@
-const API = "https://alphagrips-production.up.railway.app";
+const API =
+  location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://alphagrips-production.up.railway.app";
 
 // ============================
 // SIMPLE ROUTER SYSTEM

@@ -6,6 +6,7 @@
 <title>News – AlphaGrips</title>
 
 <style>
+
 :root {
   --primary: #2563eb;
   --dark: #0f172a;
@@ -15,410 +16,484 @@
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI", Arial, sans-serif;
 }
 
 body {
-  background: white;
-  color: var(--text-dark);
+background:white;
+color:var(--text-dark);
+overflow-x:hidden;
 }
 
 /* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-  background: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+.navbar{
+background:white;
+box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
-.navbar nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: var(--text-dark);
+.nav-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
 }
 
-.navbar nav a.login {
-  background: var(--primary);
-  color: white;
-  padding: 8px 14px;
-  border-radius: 6px;
+.navbar nav a{
+margin-left:20px;
+text-decoration:none;
+color:var(--text-dark);
+}
+
+.navbar nav a.login{
+background:var(--primary);
+color:white;
+padding:8px 14px;
+border-radius:6px;
+}
+
+/* HAMBURGER */
+
+.menu-btn{
+display:none;
+font-size:28px;
+cursor:pointer;
 }
 
 /* SECTION (UNCHANGED) */
+
 .section {
-  padding: 80px 60px;
-  max-width: 1200px;
-  margin: auto;
+padding:80px 60px;
+max-width:1200px;
+margin:auto;
 }
 
 .section h2 {
-  text-align: center;
-  font-size: 34px;
-  margin-bottom: 50px;
+text-align:center;
+font-size:34px;
+margin-bottom:50px;
 }
 
-/* ===== ONLY CARD AREA REDUCED ===== */
-
 /* GRID */
+
 .news-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
 }
 
 /* Tablet */
-@media (max-width: 1024px) {
-  .news-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
+@media (max-width:1024px) {
+.news-grid {
+grid-template-columns:repeat(2,1fr);
+}
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
+/* Mobile Cards */
+
+@media (max-width:600px) {
+.news-grid {
+grid-template-columns:1fr;
+}
 }
 
 /* CARD */
+
 .news-card {
-  background: var(--light);
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  overflow: hidden;
-  transition: 0.3s;
+background:var(--light);
+border-radius:12px;
+box-shadow:0 6px 18px rgba(0,0,0,0.06);
+overflow:hidden;
+transition:0.3s;
 }
 
 .news-card:hover {
-  transform: translateY(-4px);
+transform:translateY(-4px);
 }
 
 .news-card img {
-  width: 100%;
-  height: 200px; /* reduced from 300px */
-  object-fit: cover;
+width:100%;
+height:200px;
+object-fit:cover;
 }
 
 .news-content {
-  padding: 16px; /* reduced from 25px */
+padding:16px;
 }
 
 .news-content h3 {
-  font-size: 17px;
-  margin-bottom: 8px;
+font-size:17px;
+margin-bottom:8px;
 }
 
 .news-content p {
-  color: var(--text-light);
-  font-size: 13px;
-  margin-bottom: 8px;
+color:var(--text-light);
+font-size:13px;
+margin-bottom:8px;
 }
 
 .read-more {
-  color: var(--primary);
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 13px;
+color:var(--primary);
+cursor:pointer;
+font-weight:600;
+font-size:13px;
 }
 
-/* MODAL (UNCHANGED) */
+/* MODAL */
+
 .modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  padding: 40px;
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.75);
+justify-content:center;
+align-items:center;
+z-index:999;
+padding:40px;
 }
 
 .modal-box {
-  background: white;
-  max-width: 900px;
-  width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  position: relative;
-  animation: zoomIn 0.3s ease;
+background:white;
+max-width:900px;
+width:100%;
+border-radius:14px;
+overflow:hidden;
+position:relative;
+animation:zoomIn 0.3s ease;
 }
 
 @keyframes zoomIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+from {transform:scale(0.9);opacity:0;}
+to {transform:scale(1);opacity:1;}
 }
 
 .modal-box img {
-  width: 100%;
-  height: 500px;
-  object-fit: contain;
-  background: #000;
+width:100%;
+height:500px;
+object-fit:contain;
+background:#000;
 }
 
 .modal-content {
-  padding: 30px;
+padding:30px;
 }
 
 .modal-content h2 {
-  margin-bottom: 15px;
+margin-bottom:15px;
 }
 
 .modal-content p {
-  color: var(--text-light);
-  line-height: 1.6;
+color:var(--text-light);
+line-height:1.6;
 }
 
 .close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
-  cursor: pointer;
-  color: white;
-  z-index: 1000;
+position:absolute;
+top:15px;
+right:20px;
+font-size:28px;
+cursor:pointer;
+color:white;
+z-index:1000;
 }
 
-.close-btn:hover {
-  opacity: 0.7;
-}
+/* FOOTER */
 
-/* FOOTER (UNCHANGED) */
 .footer {
-  background: var(--dark);
-  color: white;
-  text-align: center;
-  padding: 30px;
-  margin-top: 60px;
+background:var(--dark);
+color:white;
+text-align:center;
+padding:30px;
+margin-top:60px;
 }
 
 .footer-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  max-width: 1200px;
-  margin: auto;
-  text-align: left;
+display:flex;
+align-items:center;
+gap:50px;
+max-width:1200px;
+margin:auto;
+text-align:left;
 }
 
 .footer-logo-card {
-  background: white;
-  padding: 15px;
-  border-radius: 14px;
-  width: 160px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+background:white;
+padding:15px;
+border-radius:14px;
+width:160px;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .footer-info h3 {
-  margin-bottom: 12px;
+margin-bottom:12px;
 }
 
 .footer-info p {
-  font-size: 14px;
-  color: #cbd5e1;
-  margin-bottom: 6px;
-  line-height: 1.5;
+font-size:14px;
+color:#cbd5e1;
+margin-bottom:6px;
+line-height:1.5;
 }
 
 .footer-social {
-  display: flex;
-  gap: 15px;
-  margin-top: 12px;
-}
-
-.footer-social a {
-  transition: 0.3s;
+display:flex;
+gap:15px;
+margin-top:12px;
 }
 
 .footer-social a:hover {
-  transform: translateY(-3px);
-  opacity: 0.85;
+transform:translateY(-3px);
+opacity:0.85;
 }
 
-@media(max-width: 900px){
-  .footer-wrapper {
-    flex-direction: column;
-    text-align: center;
-  }
+/* MOBILE NAVBAR ONLY */
 
-  .footer-social {
-    justify-content: center;
-  }
+@media(max-width:900px){
+
+.menu-btn{
+display:block;
 }
+
+.nav-inner{
+padding:15px 30px;
+}
+
+.navbar nav{
+display:none;
+flex-direction:column;
+width:100%;
+margin-top:15px;
+}
+
+.navbar nav.show{
+display:flex;
+}
+
+.navbar nav a{
+padding:14px;
+border-bottom:1px solid #eee;
+text-align:center;
+margin-left:0;
+}
+
+.footer-wrapper{
+flex-direction:column;
+text-align:center;
+}
+
+.footer-social{
+justify-content:center;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header class="navbar">
-  <div><strong>AlphaGrips</strong></div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="players.html">Our Players</a>
-    <a href="arena.html">Our Arena</a>
-    <a href="programs.html">Training Programs</a>
-    <a href="news.html">News</a>
-    <a href="achievements.html">Achievements</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="login.html" class="login">Login</a>
-  </nav>
+
+<div class="nav-inner">
+
+<div><strong>AlphaGrips</strong></div>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<nav id="menu">
+
+<a href="index.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="players.html">Our Players</a>
+<a href="arena.html">Our Arena</a>
+<a href="programs.html">Training Programs</a>
+<a href="news.html">News</a>
+<a href="achievements.html">Achievements</a>
+<a href="contact.html">Contact Us</a>
+<a href="login.html" class="login">Login</a>
+
+</nav>
+
+</div>
+
 </header>
 
 <section class="section">
-  <h2>Academy Highlights</h2>
 
-  <div class="news-grid">
+<h2>Academy Highlights</h2>
 
-    <div class="news-card">
-      <img src="Image/summer_camp.png">
-      <div class="news-content">
-        <h3>Summer Camp 2026</h3>
-        <p>Structured summer badminton program with technical drills and match exposure.</p>
-        <span class="read-more" onclick="openModal('summer')">Read More →</span>
-      </div>
-    </div>
+<div class="news-grid">
 
-    <div class="news-card">
-      <img src="Image/coaching_programme.png">
-      <div class="news-content">
-        <h3>AlphaGrips Coaching Programme</h3>
-        <p>Scientific training structure and competitive pathway development.</p>
-        <span class="read-more" onclick="openModal('coaching')">Read More →</span>
-      </div>
-    </div>
+<div class="news-card">
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/summer_camp.jpeg">
+<div class="news-content">
+<h3>Summer Camp 2026</h3>
+<p>Structured summer badminton program with technical drills and match exposure.</p>
+<span class="read-more" onclick="openModal('summer')">Read More →</span>
+</div>
+</div>
 
-    <div class="news-card">
-      <img src="Image/sihi_achievement.jpeg">
-      <div class="news-content">
-        <h3>Sihi – Karnataka Rank 1 (U13 Girls)</h3>
-        <p>A proud moment as Sihi secures Karnataka State Rank 1 under AlphaGrips.</p>
-        <span class="read-more" onclick="openModal('sihi')">Read More →</span>
-      </div>
-    </div>
+<div class="news-card">
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/coaching_programme.png">
+<div class="news-content">
+<h3>AlphaGrips Coaching Programme</h3>
+<p>Scientific training structure and competitive pathway development.</p>
+<span class="read-more" onclick="openModal('coaching')">Read More →</span>
+</div>
+</div>
 
-    <div class="news-card">
-      <img src="Image/logo.png">
-      <div class="news-content">
-        <h3>New AlphaGrips Branch – Coming Soon</h3>
-        <p>Expansion announcement – new training center launching shortly.</p>
-        <span class="read-more" onclick="openModal('branch')">Read More →</span>
-      </div>
-    </div>
+<div class="news-card">
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/sihi_achievement.jpeg">
+<div class="news-content">
+<h3>Sihi – Karnataka Rank 1 (U13 Girls)</h3>
+<p>A proud moment as Sihi secures Karnataka State Rank 1 under AlphaGrips.</p>
+<span class="read-more" onclick="openModal('sihi')">Read More →</span>
+</div>
+</div>
 
-  </div>
+<div class="news-card">
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png">
+<div class="news-content">
+<h3>New AlphaGrips Branch – Coming Soon</h3>
+<p>Expansion announcement – new training center launching shortly.</p>
+<span class="read-more" onclick="openModal('branch')">Read More →</span>
+</div>
+</div>
+
+</div>
+
 </section>
 
 <div class="modal" id="modal">
-  <span class="close-btn" onclick="closeModal()">✕</span>
-  <div class="modal-box">
-    <img id="modal-img">
-    <div class="modal-content">
-      <h2 id="modal-title"></h2>
-      <p id="modal-text"></p>
-    </div>
-  </div>
+<span class="close-btn" onclick="closeModal()">✕</span>
+
+<div class="modal-box">
+
+<img id="modal-img">
+
+<div class="modal-content">
+
+<h2 id="modal-title"></h2>
+
+<p id="modal-text"></p>
+
+</div>
+
+</div>
+
 </div>
 
 <footer class="footer">
-  <div class="footer-wrapper">
 
-    <div class="footer-logo-card">
-      <img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png"
-           alt="AlphaGrips Logo"
-           style="height:50px;">
-    </div>
+<div class="footer-wrapper">
 
-    <div class="footer-info">
-      <h3>AlphaGrips Badminton Academy</h3>
+<div class="footer-logo-card">
 
-      <p>
-        WH2W+FR3, Rose Garden Rd<br>
-        Anthappa Layout, Phase 4<br>
-        Panduranga Nagar<br>
-        Bengaluru, Karnataka 560076
-      </p>
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png"
+style="height:50px;">
 
-      <p><strong>Contact:</strong> +91 70132 18442</p>
-      <p><strong>Email:</strong> alphagripsacademy@gmail.com</p>
+</div>
 
-      <div class="footer-social">
+<div class="footer-info">
 
-        <!-- Instagram -->
-        <a href="https://instagram.com/alphagripsbadmintonacademy" target="_blank">
-          <svg viewBox="0 0 24 24"
-               width="22"
-               height="22"
-               fill="none"
-               stroke="white"
-               stroke-width="2">
-            <rect x="3" y="3" width="18" height="18" rx="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17" cy="7" r="1.5"/>
-          </svg>
-        </a>
+<h3>AlphaGrips Badminton Academy</h3>
 
-        <!-- Facebook -->
-        <a href="#" target="_blank">
-          <svg viewBox="0 0 24 24"
-               width="22"
-               height="22"
-               fill="white">
-            <path d="M13 22v-8h3l1-4h-4V8c0-1.2.3-2 2-2h2V2.3C16.6 2.1 15.5 2 14.4 2 11.8 2 10 3.6 10 6.6V10H7v4h3v8h3z"/>
-          </svg>
-        </a>
+<p>
+WH2W+FR3, Rose Garden Rd<br>
+Anthappa Layout, Phase 4<br>
+Panduranga Nagar<br>
+Bengaluru, Karnataka 560076
+</p>
 
-      </div>
-    </div>
+<p><strong>Contact:</strong> +91 70132 18442</p>
 
-  </div>
+<p><strong>Email:</strong> alphagripsacademy@gmail.com</p>
+
+<div class="footer-social">
+
+<a href="https://instagram.com/alphagripsbadmintonacademy" target="_blank">
+
+<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="white" stroke-width="2">
+
+<rect x="3" y="3" width="18" height="18" rx="5"/>
+<circle cx="12" cy="12" r="4"/>
+<circle cx="17" cy="7" r="1.5"/>
+
+</svg>
+
+</a>
+
+<a href="#" target="_blank">
+
+<svg viewBox="0 0 24 24" width="22" height="22" fill="white">
+
+<path d="M13 22v-8h3l1-4h-4V8c0-1.2.3-2 2-2h2V2.3C16.6 2.1 15.5 2 14.4 2 11.8 2 10 3.6 10 6.6V10H7v4h3v8h3z"/>
+
+</svg>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
 </footer>
+
 <script>
-function openModal(type) {
-  document.body.style.overflow = 'hidden';
 
-  const modal = document.getElementById("modal");
-  const img = document.getElementById("modal-img");
-  const title = document.getElementById("modal-title");
-  const text = document.getElementById("modal-text");
-
-  if(type === "summer") {
-    img.src = "Image/summer_camp.png";
-    title.innerText = "Summer Camp 2026";
-    text.innerText = "Camp 1 starts from 1st April. Camp 2 starts from 1st May. Morning and Evening batches available.";
-  }
-
-  if(type === "coaching") {
-    img.src = "Image/coaching_programme.png";
-    title.innerText = "AlphaGrips Coaching Programme";
-    text.innerText = "Experienced coaches, structured training and periodic assessments.";
-  }
-
-  if(type === "sihi") {
-    img.src = "Image/sihi_achievement.jpeg";
-    title.innerText = "Sihi – Karnataka Rank 1";
-    text.innerText = "Under 13 Girls Karnataka Rank 1 achieved under AlphaGrips coaching.";
-  }
-
-  if(type === "branch") {
-    img.src = "Image/logo.png";
-    title.innerText = "New AlphaGrips Branch – Coming Soon";
-    text.innerText = "We are expanding! A new AlphaGrips training center launching soon.";
-  }
-
-  modal.style.display = "flex";
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("show");
 }
 
-function closeModal() {
-  document.body.style.overflow = 'auto';
-  document.getElementById("modal").style.display = "none";
+function openModal(type){
+
+document.body.style.overflow='hidden';
+
+const modal=document.getElementById("modal");
+const img=document.getElementById("modal-img");
+const title=document.getElementById("modal-title");
+const text=document.getElementById("modal-text");
+
+if(type==="summer"){
+img.src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/summer_camp.jpeg";
+title.innerText="Summer Camp 2026";
+text.innerText="Camp 1 starts from 1st April. Camp 2 starts from 1st May. Morning and Evening batches available.";
 }
+
+if(type==="coaching"){
+img.src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/coaching_programme.png";
+title.innerText="AlphaGrips Coaching Programme";
+text.innerText="Experienced coaches, structured training and periodic assessments.";
+}
+
+if(type==="sihi"){
+img.src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/sihi_achievement.jpeg";
+title.innerText="Sihi – Karnataka Rank 1";
+text.innerText="Under 13 Girls Karnataka Rank 1 achieved under AlphaGrips coaching.";
+}
+
+if(type==="branch"){
+img.src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png";
+title.innerText="New AlphaGrips Branch – Coming Soon";
+text.innerText="We are expanding! A new AlphaGrips training center launching soon.";
+}
+
+modal.style.display="flex";
+}
+
+function closeModal(){
+document.body.style.overflow='auto';
+document.getElementById("modal").style.display="none";
+}
+
 </script>
 
 </body>

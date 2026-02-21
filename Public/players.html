@@ -3,319 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Players – AlphaGrips Badminton Academy</title>
+<title>Our Players – AlphaGrips</title>
 
 <style>
-:root {
-  --primary: #2563eb;
-  --dark: #0f172a;
-  --light: #f8fafc;
-  --text-dark: #1e293b;
-  --text-light: #64748b;
+
+:root{
+--primary:#2563eb;
+--dark:#0f172a;
+--light:#f8fafc;
+--text-dark:#1e293b;
+--text-light:#64748b;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI", Arial, sans-serif;
 }
 
-body {
-  background: white;
-  color: var(--text-dark);
+body{
+background:white;
+color:var(--text-dark);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* CONTAINER */
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:0 20px;
 }
 
 /* NAVBAR */
-.navbar {
-  background: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+
+.navbar{
+background:white;
+box-shadow:0 4px 12px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:100;
 }
 
-.nav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
+.nav-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 0;
 }
 
-.navbar img {
-  height: 55px;
+.navbar img{
+height:50px;
 }
 
-.navbar nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: var(--text-dark);
-  font-weight: 500;
-  transition: 0.3s;
+.navbar nav a{
+margin-left:20px;
+text-decoration:none;
+color:var(--text-dark);
 }
 
-.navbar nav a:hover {
-  color: var(--primary);
-}
-
-.navbar nav a.login {
-  background: var(--primary);
-  color: white;
-  padding: 8px 14px;
-  border-radius: 6px;
+.navbar nav a.login{
+background:var(--primary);
+color:white;
+padding:8px 14px;
+border-radius:6px;
 }
 
 /* HERO */
-.hero {
-  height: 50vh;
-  background: linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.7)),
-              url('https://images.unsplash.com/photo-1546519638-68e109498ffc');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
+
+.hero{
+height:50vh;
+background:linear-gradient(rgba(15,23,42,0.7),
+rgba(15,23,42,0.7)),
+url('https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/herobody-pic-programe.png');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+text-align:center;
 }
 
-.hero h1 {
-  font-size: 46px;
+.hero h1{
+font-size:46px;
 }
 
 /* SECTION */
-.section {
-  padding: 80px 0;
+
+.section{
+padding:80px 0;
 }
 
-.section h2 {
-  text-align: center;
-  font-size: 34px;
-  margin-bottom: 50px;
+.section h2{
+text-align:center;
+font-size:34px;
+margin-bottom:50px;
 }
 
-/* GRID */
-.players-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+/* PLAYERS GRID */
+
+.players-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
 }
 
-.player-card {
-  background: var(--light);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-  text-align: center;
-  transition: 0.3s;
+/* PLAYER CARD */
+
+.player-card{
+background:var(--light);
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 8px 24px rgba(0,0,0,0.05);
+text-align:center;
+transition:0.3s;
+padding-bottom:10px;
 }
 
-.player-card:hover {
-  transform: translateY(-6px);
+.player-card:hover{
+transform:translateY(-6px);
 }
 
-.player-card img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
+/* IMAGE FIX (NO CROPPING) */
+
+.player-card img{
+width:100%;
+height:auto;
+display:block;
 }
 
-.player-card h3 {
-  margin: 18px 0 6px;
+/* NAME */
+
+.player-card h3{
+margin:15px 0;
+font-size:18px;
 }
 
-.player-card p {
-  color: var(--text-light);
-  font-size: 14px;
-  margin-bottom: 20px;
+/* TEAM PHOTO */
+
+.team-photo{
+max-width:900px;
+margin:40px auto;
+}
+
+.team-photo img{
+width:100%;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
 }
 
 /* FOOTER */
-.footer {
-  background: #0f172a;
-  padding: 50px 0;
-  color: white;
-  margin-top: 60px;
+
+.footer{
+background:var(--dark);
+color:white;
+padding:50px 0;
+margin-top:60px;
 }
 
-.footer-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 50px;
+.footer-wrapper{
+display:flex;
+align-items:center;
+gap:50px;
+max-width:1200px;
+margin:auto;
 }
 
-.footer-logo-card {
-  background: white;
-  padding: 15px;
-  border-radius: 14px;
-  width: 160px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.footer-logo-card{
+background:white;
+padding:15px;
+border-radius:14px;
+width:160px;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
-.footer-logo-card img {
-  width: 100%;
+.footer-info h3{
+margin-bottom:12px;
 }
 
-.footer-info h3 {
-  font-size: 18px;
-  margin-bottom: 12px;
+.footer-info p{
+font-size:14px;
+color:#cbd5e1;
+margin-bottom:6px;
+line-height:1.5;
 }
 
-.footer-info p {
-  font-size: 14px;
-  color: #cbd5e1;
-  margin-bottom: 6px;
-  line-height: 1.5;
+/* MOBILE */
+
+@media(max-width:900px){
+
+.footer-wrapper{
+flex-direction:column;
+text-align:center;
 }
 
-.footer-social {
-  display: flex;
-  gap: 15px;
-  margin-top: 12px;
 }
 
-.footer-social a {
-  transition: 0.3s;
-}
-
-.footer-social a:hover {
-  transform: translateY(-3px);
-  opacity: 0.85;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .footer-wrapper {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-social {
-    justify-content: center;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <div class="container nav-inner">
-    <div>
-      <img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png"
-           alt="AlphaGrips Logo">
-    </div>
 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="players.html">Our Players</a>
-      <a href="arena.html">Our Arena</a>
-      <a href="programs.html">Training Programs</a>
-      <a href="news.html">News</a>
-      <a href="achievements.html">Achievements</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="login.html" class="login">Login</a>
-    </nav>
-  </div>
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<div class="container nav-inner">
+
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png">
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="players.html">Our Players</a>
+<a href="arena.html">Our Arena</a>
+<a href="programs.html">Training Programs</a>
+<a href="news.html">News</a>
+<a href="achievements.html">Achievements</a>
+<a href="contact.html">Contact Us</a>
+<a href="login.html" class="login">Login</a>
+
+</nav>
+
+</div>
+
 </header>
 
+
+
 <!-- HERO -->
+
 <section class="hero">
-  <h1>Meet Our Players</h1>
+
+<h1>Our Players</h1>
+
 </section>
 
-<!-- PLAYERS SECTION -->
+
+
+<!-- PROFESSIONAL PLAYERS -->
+
 <section class="section">
-  <div class="container">
 
-    <h2>Elite Athletes</h2>
+<div class="container">
 
-    <div class="players-grid">
+<h2>Professional Karnataka Players</h2>
 
-      <div class="player-card">
-        <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d" alt="Player">
-        <h3>Rahul Sharma</h3>
-        <p>Category: Senior • State Champion</p>
-      </div>
 
-      <div class="player-card">
-        <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e" alt="Player">
-        <h3>Ananya Verma</h3>
-        <p>Category: Junior • National Finalist</p>
-      </div>
+<div class="players-grid">
 
-      <div class="player-card">
-        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b" alt="Player">
-        <h3>Arjun Mehta</h3>
-        <p>Category: Sub-Junior • District Winner</p>
-      </div>
 
-      <div class="player-card">
-        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc" alt="Player">
-        <h3>Sneha Kapoor</h3>
-        <p>Category: Senior • International Participant</p>
-      </div>
+<div class="player-card">
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/Players/sihi.jpeg">
+<h3>Sihi</h3>
+</div>
 
-    </div>
 
-  </div>
+<div class="player-card">
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/Players/joshua.jpg">
+<h3>Joshua</h3>
+</div>
+
+
+<div class="player-card">
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/Players/jashrita.jpg">
+<h3>Jashrita</h3>
+</div>
+
+
+<div class="player-card">
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/Players/jessy.jpeg">
+<h3>Jessy</h3>
+</div>
+
+
+<div class="player-card">
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/Players/manasvi.jpg">
+<h3>Manasvi</h3>
+</div>
+
+
+</div>
+
+</div>
+
 </section>
+
+
+
+<!-- TEAM PHOTO -->
+
+<section class="section">
+
+<div class="container">
+
+<h2>Team AlphaGrips</h2>
+
+
+<div class="team-photo">
+
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/Players/alphagrips-team.JPG">
+
+</div>
+
+</div>
+
+</section>
+
+
 
 <!-- FOOTER -->
+
 <footer class="footer">
-  <div class="container footer-wrapper">
 
-    <div class="footer-logo-card">
-      <img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png"
-           alt="AlphaGrips Logo">
-    </div>
+<div class="container footer-wrapper">
 
-    <div class="footer-info">
-      <h3>AlphaGrips Badminton Academy</h3>
+<div class="footer-logo-card">
 
-      <p>
-        WH2W+FR3, Rose Garden Rd<br>
-        Anthappa Layout, Phase 4<br>
-        Panduranga Nagar<br>
-        Bengaluru, Karnataka 560076
-      </p>
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png"
+style="height:50px;">
 
-      <p><strong>Contact:</strong> +91 70132 18442</p>
-      <p><strong>Email:</strong> alphagripsacademy@gmail.com</p>
+</div>
 
-      <div class="footer-social">
+<div class="footer-info">
 
-        <!-- Instagram -->
-        <a href="https://instagram.com/alphagripsbadmintonacademy" target="_blank">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="white" stroke-width="2">
-            <rect x="3" y="3" width="18" height="18" rx="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17" cy="7" r="1.5"/>
-          </svg>
-        </a>
+<h3>AlphaGrips Badminton Academy</h3>
 
-        <!-- Facebook -->
-        <a href="#" target="_blank">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="white">
-            <path d="M13 22v-8h3l1-4h-4V8c0-1.2.3-2 2-2h2V2.3C16.6 2.1 15.5 2 14.4 2 11.8 2 10 3.6 10 6.6V10H7v4h3v8h3z"/>
-          </svg>
-        </a>
+<p>
+WH2W+FR3, Rose Garden Rd<br>
+Anthappa Layout, Phase 4<br>
+Panduranga Nagar<br>
+Bengaluru, Karnataka 560076
+</p>
 
-      </div>
-    </div>
+<p><strong>Contact:</strong> +91 70132 18442</p>
 
-  </div>
+<p><strong>Email:</strong> alphagripsacademy@gmail.com</p>
+
+</div>
+
+</div>
+
 </footer>
+
 
 </body>
 </html>
