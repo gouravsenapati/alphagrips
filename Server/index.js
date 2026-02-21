@@ -2,20 +2,16 @@ import express from "express";
 
 const app = express();
 
-/* Required for Railway */
 app.get("/", (req, res) => {
-  res.status(200).send("AlphaGrips API Running");
+  res.send("AlphaGrips API Running");
 });
 
-/* Health route */
 app.get("/health", (req, res) => {
-  res.status(200).send("OK");
+  res.send("OK");
 });
 
-/* Important */
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
-/* Critical: No host binding */
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
