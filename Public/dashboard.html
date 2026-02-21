@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AlphaGrips – Match System</title>
+
+  <script>
+  (function () {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.replace("login.html");
+    }
+  })();
+</script>
+<style>
+:root {
+  --primary: #2563eb;
+  --sidebar-bg: #0f172a;
+  --sidebar-hover: #1e293b;
+  --bg: #f1f5f9;
+  --card-bg: #ffffff;
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+  --border-light: #e2e8f0;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--sidebar-bg);
+  color: white;
+  padding: 24px 16px;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.sidebar a:hover {
+  background: var(--sidebar-hover);
+  color: white;
+}
+
+.main {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+button {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+input, select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.table th {
+  text-align: left;
+  padding: 12px;
+  background: #f8fafc;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 14px;
+}
+
+.table tr:hover {
+  background: #f9fafb;
+}
+
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.status-badge.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+
+.streak-win {
+  display: inline-block;
+  background: #dcfce7;
+  color: #166534;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+.streak-loss {
+  display: inline-block;
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+</style>
+
+
+<style>
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  z-index: 1000;
+  width: 320px;
+}
+
+.modal input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.modal button {
+  padding: 8px 14px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2>AlphaGrips</h2>
+
+      <nav>
+        <a data-module="dashboard">Dashboard</a>
+        <a data-module="players">Players</a>
+        <a data-module="matches">Matches</a>
+        <a data-module="rankings">Rankings</a>
+        <a data-module="matrix">Matrix</a>
+        <a data-module="categories">Categories</a>
+        <a data-module="users" id="usersNav">Users</a>
+        <a data-module="finance">Finance</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN AREA -->
+    <main class="main">
+
+      <header class="header">
+        <div id="loggedInUser"></div>
+        <button id="logoutBtn">Logout</button>
+      </header>
+
+      <section id="app">
+        <!-- Dynamic module loads here -->
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+
+    </main>
+</div>
+
+
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script src="app.js"></script>
+<script src="finance/finance.js"></script>
+
+</body>
+</html>
+
+</body>
+</html>
