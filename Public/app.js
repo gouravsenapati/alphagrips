@@ -1653,5 +1653,4 @@ async function init() {
   loadModule("dashboard");
 }
 
-
 document.addEventListener("DOMContentLoaded", init);
