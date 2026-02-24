@@ -1,283 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Our Arena – AlphaGrips</title>
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-:root{
---primary:#2563eb;
---dark:#0f172a;
---light:#f8fafc;
---text-dark:#1e293b;
---text-light:#64748b;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:"Segoe UI",Arial;
-}
-
-body{
-background:white;
-color:var(--text-dark);
-overflow-x:hidden;
-}
-
-/* CONTAINER */
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:0 20px;
-}
-
-/* NAVBAR (IDENTICAL TO OTHER PAGES) */
-
-.navbar{
-background:white;
-box-shadow:0 4px 12px rgba(0,0,0,0.05);
-position:sticky;
-top:0;
-z-index:1000;
-}
-
-.nav-inner{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 0;
-}
-
-.navbar img{
-height:55px;
-}
-
-nav{
-display:flex;
-gap:20px;
-}
-
-nav a{
-text-decoration:none;
-color:var(--text-dark);
-font-weight:500;
-}
-
-nav a.login{
-background:var(--primary);
-color:white;
-padding:8px 14px;
-border-radius:6px;
-}
-
-/* BURGER */
-
-.menu-btn{
-display:none;
-font-size:28px;
-cursor:pointer;
-}
-
-/* HERO */
-
-.hero{
-height:55vh;
-background:linear-gradient(rgba(15,23,42,0.7),
-rgba(15,23,42,0.7)),
-url('https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/herobody-pic-programe.png');
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-text-align:center;
-}
-
-.hero h1{
-font-size:46px;
-}
-
-/* SECTION */
-
-.section{
-padding:80px 0;
-}
-
-.section h2{
-text-align:center;
-font-size:34px;
-margin-bottom:20px;
-}
-
-.section p{
-text-align:center;
-max-width:850px;
-margin:auto auto 40px;
-line-height:1.7;
-color:var(--text-light);
-}
-
-/* FEATURES */
-
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-margin-top:40px;
-}
-
-.feature-card{
-background:var(--light);
-padding:30px;
-border-radius:14px;
-box-shadow:0 8px 24px rgba(0,0,0,0.05);
-text-align:center;
-}
-
-.feature-card h3{
-margin-bottom:12px;
-}
-
-/* IMAGE GRID */
-
-.image-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
-margin-top:60px;
-}
-
-.image-grid img{
-width:100%;
-height:240px;
-object-fit:cover;
-border-radius:12px;
-}
-
-/* FOOTER */
-
-.footer{
-background:var(--dark);
-color:white;
-padding:50px 0;
-margin-top:60px;
-}
-
-.footer-wrapper{
-display:flex;
-align-items:center;
-gap:50px;
-}
-
-/* OVERLAY */
-
-.overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.4);
-display:none;
-z-index:9998;
-}
-
-.overlay.show{
-display:block;
-}
-
-/* MOBILE MENU */
-
-.mobile-menu{
-position:fixed;
-top:0;
-right:0;
-width:300px;
-height:100vh;
-background:white;
-z-index:9999;
-transform:translateX(300px);
-transition:0.35s;
-box-shadow:-6px 0 25px rgba(0,0,0,0.25);
-overflow:auto;
-}
-
-.mobile-menu.show{
-transform:translateX(0);
-}
-
-.menu-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
-border-bottom:1px solid #eee;
-}
-
-.menu-header img{
-height:40px;
-}
-
-.close-btn{
-font-size:26px;
-cursor:pointer;
-}
-
-.mobile-menu a{
-display:block;
-padding:16px 20px;
-border-bottom:1px solid #eee;
-text-decoration:none;
-color:#1e293b;
-}
-
-.mobile-menu .login{
-margin:20px;
-background:#2563eb;
-color:white;
-text-align:center;
-border-radius:6px;
-padding:12px;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-nav{
-display:none;
-}
-
-.menu-btn{
-display:block;
-}
-
-.footer-wrapper{
-flex-direction:column;
-text-align:center;
-}
-
-.hero h1{
-font-size:30px;
-}
-
-}
-
-</style>
 </head>
 
 <body>
 
 
+<!-- OVERLAY -->
+
 <div class="overlay" id="overlay"></div>
 
+
+
+<!-- NAVBAR -->
 
 <header class="navbar">
 
@@ -307,6 +51,9 @@ font-size:30px;
 </header>
 
 
+
+<!-- MOBILE MENU -->
+
 <div class="mobile-menu" id="menu">
 
 <div class="menu-header">
@@ -331,10 +78,18 @@ font-size:30px;
 </div>
 
 
+
+<!-- HERO -->
+
 <section class="hero">
+
 <h1>Our World-Class Arena</h1>
+
 </section>
 
+
+
+<!-- FACILITIES -->
 
 <section class="section">
 
@@ -347,24 +102,25 @@ AlphaGrips Arena provides an elite training environment with professional courts
 lighting systems and performance infrastructure.
 </p>
 
+
 <div class="features">
 
-<div class="feature-card">
+<div class="card">
 <h3>Professional Courts</h3>
 <p>International-standard wooden flooring.</p>
 </div>
 
-<div class="feature-card">
+<div class="card">
 <h3>Advanced Lighting</h3>
 <p>Glare-free LED lighting.</p>
 </div>
 
-<div class="feature-card">
+<div class="card">
 <h3>Fitness Zone</h3>
 <p>Dedicated conditioning area.</p>
 </div>
 
-<div class="feature-card">
+<div class="card">
 <h3>Spectator Seating</h3>
 <p>Comfortable viewing area.</p>
 </div>
@@ -372,7 +128,7 @@ lighting systems and performance infrastructure.
 </div>
 
 
-<div class="image-grid">
+<div class="arena-images">
 
 <img src="https://images.unsplash.com/photo-1584467735871-bfbf0d16c2a1">
 
@@ -387,49 +143,41 @@ lighting systems and performance infrastructure.
 </section>
 
 
+
+<!-- FOOTER -->
+
 <footer class="footer">
-
 <div class="container footer-wrapper">
-
-<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png" style="height:50px;">
-
-<div>
-
+<div class="footer-logo-card">
+<a href="index.html">
+<img src="https://qtfpnufmzroqnhtjeypq.supabase.co/storage/v1/object/public/imp_pic/logo.png">
+</a>
+</div>
+<div class="footer-info">
 <h3>AlphaGrips Badminton Academy</h3>
-
-<p>WH2W+FR3 Rose Garden Rd Bengaluru</p>
-
 <p>+91 70132 18442</p>
-
 <p>alphagripsacademy@gmail.com</p>
-
+<div class="footer-social">
+<a href="https://www.instagram.com/alphagripsbadmintonacademy/" target="_blank">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+<rect x="3" y="3" width="18" height="18" rx="5"/>
+<circle cx="12" cy="12" r="4"/>
+<circle cx="17" cy="7" r="1.5"/>
+</svg>
+</a>
+<a href="https://www.facebook.com/p/AlphaGrips-BadmintonAcademy-100091860544494/" target="_blank">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+<path d="M13 22v-8h3l1-4h-4V8c0-1.2.3-2 2-2h2V2.3C16.6 2.1 15.5 2 14.4 2 11.8 2 10 3.6 10 6.6V10H7v4h3v8h3z"/>
+</svg>
+</a>
 </div>
-
 </div>
-
+</div>
 </footer>
 
 
-<script>
 
-const menu=document.getElementById("menu");
-const overlay=document.getElementById("overlay");
-
-function toggleMenu(){
-
-menu.classList.toggle("show");
-overlay.classList.toggle("show");
-
-}
-
-overlay.onclick=function(){
-
-menu.classList.remove("show");
-overlay.classList.remove("show");
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
