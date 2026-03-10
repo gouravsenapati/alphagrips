@@ -39,6 +39,7 @@
 <a href="programs.html">Training Programs</a>
 <a href="news.html">News</a>
 <a href="achievements.html">Achievements</a>
+<a href="tournament.html">Tournament</a>
 <a href="contact.html">Contact Us</a>
 
 <a href="login.html" class="login">Login</a>
@@ -68,6 +69,7 @@
 <a href="programs.html">Training Programs</a>
 <a href="news.html">News</a>
 <a href="achievements.html">Achievements</a>
+<a href="tournament.html">Tournament</a>
 <a href="contact.html">Contact Us</a>
 
 <a href="login.html" class="login">Login</a>
@@ -133,19 +135,30 @@ View on Google Maps
 
 <h2>Enquiry Form</h2>
 
+<form id="enquiryForm">
 <label>Name</label>
-<input type="text">
+<input type="text" name="name" required>
 
 <label>Email</label>
-<input type="email">
+<input type="email" name="email" required>
 
 <label>Phone</label>
-<input type="text">
+<input type="text" name="phone">
+
+<label>Branch / Academy</label>
+<select name="branch_name" required>
+<option value="">Select branch</option>
+<option value="Shuttle Smash Sports Studio, Bengaluru">Shuttle Smash Sports Studio, Bengaluru</option>
+<option value="DNA Badminton Arena, Akshayanagara, Bengaluru">DNA Badminton Arena, Akshayanagara, Bengaluru</option>
+</select>
 
 <label>Message</label>
-<textarea></textarea>
+<textarea name="message" required></textarea>
 
-<button>Submit Enquiry</button>
+<div id="enquiryStatus" class="enquiry-status" hidden></div>
+
+<button type="submit">Submit Enquiry</button>
+</form>
 
 </div>
 
@@ -190,6 +203,7 @@ View on Google Maps
 
 
 <script src="script.js"></script>
+<script src="contact.js"></script>
 
 </body>
 </html>

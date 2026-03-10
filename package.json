@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "server.js",
+  "main": "Backend/src/index.js",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "start": "node index.js"
+    "start": "node Backend/src/index.js",
+    "start:backend": "node Backend/src/index.js",
+    "start:legacy": "node index.js",
+    "qa:tournament": "node Backend/scripts/tournamentQa.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +25,7 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "mssql": "^12.2.0",
+    "nodemailer": "^6.10.1",
     "razorpay": "^2.9.6"
   }
 }

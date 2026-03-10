@@ -71,6 +71,34 @@ body {
   color: var(--text-dark);
 }
 
+.back-links {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.back-link:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
 input {
   width: 100%;
   padding: 12px;
@@ -142,21 +170,26 @@ button:hover {
     <button onclick="login()">Login</button>
 
     <p id="error"></p>
+
+    <div class="back-links">
+      <a class="back-link" href="/Public/index.html">Back to Home</a>
+      <a class="back-link" href="/Public/tournament.html">Go to Tournament Hub</a>
+      <a class="back-link" href="/Public/parent/index.html">Parent Portal</a>
+    </div>
   </div>
-</div><script>
+</div><script type="module">
+import { getApiBase } from "./shared/runtime.js";
 
-const API =
-  location.hostname === "localhost"
-    ? "http://localhost:3000"
-    : "https://alphagrips-production.up.railway.app";
+const API = getApiBase();
 
-async function login() {
+window.login = async function login() {
 
   document.getElementById("error").innerText = "";
+  ["token", "role", "role_id", "academy_id", "email"].forEach((key) => localStorage.removeItem(key));
 
   try {
 
-    const res = await fetch(`${API}/login`, {
+    const res = await fetch(`${API}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -177,23 +210,22 @@ async function login() {
 
     localStorage.setItem("token", data.token);
     localStorage.setItem("role", data.role);
+    localStorage.setItem("role_id", data.role_id);
     localStorage.setItem("academy_id", data.academy_id);
     localStorage.setItem("email", data.email);
 
-    window.location.href = "dashboard.html";
+    const redirect = new URLSearchParams(window.location.search).get("redirect");
+    const defaultTarget = String(data.role || "").toLowerCase().startsWith("parent")
+      ? "/Public/parent/index.html"
+      : "dashboard/index.html#players";
+    window.location.href = redirect || defaultTarget;
 
   } catch (err) {
-
     document.getElementById("error").innerText =
       "Server connection failed";
-
   }
 
-}
-
-if (localStorage.getItem("token")) {
-  window.location.href = "dashboard.html";
-}
+};
 
 </script>
 

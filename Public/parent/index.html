@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlphaGrips Parent Portal</title>
+    <link rel="stylesheet" href="/Public/dashboard/css/dashboard.css" />
+    <link rel="stylesheet" href="/Public/parent/css/parent.css" />
+    <script>
+      (function () {
+        const token = localStorage.getItem("token");
+        const decodeRoleFromToken = function (jwtToken) {
+          try {
+            const payload = jwtToken.split(".")[1];
+            const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
+            const decoded = JSON.parse(atob(normalized));
+            return {
+              role: String(decoded.role || decoded.role_name || "").toLowerCase(),
+              roleId: String(decoded.role_id || "")
+            };
+          } catch (error) {
+            return { role: "", roleId: "" };
+          }
+        };
+        const tokenMeta = decodeRoleFromToken(token || "");
+        const role = tokenMeta.role || String(localStorage.getItem("role") || "").toLowerCase();
+        const roleId = tokenMeta.roleId || String(localStorage.getItem("role_id") || "");
+        const isParentRole = function (roleValue) {
+          return String(roleValue || "").toLowerCase().startsWith("parent");
+        };
+
+        if (!token) {
+          window.location.replace("/Public/login.html?redirect=/Public/parent/index.html");
+          return;
+        }
+
+        if (role && !isParentRole(role) && roleId !== "4") {
+          window.location.replace("/Public/dashboard/index.html#players");
+        }
+      })();
+    </script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button onclick="toggleSidebar()" class="menu-btn" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="brand-kicker">AlphaGrips</p>
+            <h1>Parent Portal</h1>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a class="btn btn-ghost" href="/Public/index.html">Back to Home</a>
+          <button onclick="logout()" class="btn btn-ghost">Logout</button>
+        </div>
+      </header>
+
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <p class="brand-kicker">Family View</p>
+          <strong>My Children</strong>
+        </div>
+        <nav id="parentChildNav"></nav>
+      </aside>
+
+      <main id="app"></main>
+    </div>
+
+    <script type="module" src="/Public/parent/js/parent.js"></script>
+  </body>
+</html>

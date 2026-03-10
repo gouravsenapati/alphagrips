@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlphaGrips Referee Console</title>
+    <link rel="stylesheet" href="../dashboard/css/dashboard.css" />
+    <link rel="stylesheet" href="./css/referee.css" />
+    <script>
+      (function () {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          const redirect = encodeURIComponent("/Public/tournament/referee.html");
+          window.location.replace(`/Public/login.html?redirect=${redirect}`);
+        }
+      })();
+    </script>
+  </head>
+  <body class="referee-body">
+    <header class="topbar referee-topbar">
+      <div class="topbar-left">
+        <div>
+          <p class="brand-kicker">AlphaGrips</p>
+          <h1>Referee Console</h1>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <a class="btn btn-ghost" href="/Public/tournament.html">Tournament Hub</a>
+        <button id="refereeRefreshButton" class="btn btn-ghost" type="button">Refresh</button>
+        <button id="refereeLogoutButton" class="btn btn-ghost" type="button">Logout</button>
+      </div>
+    </header>
+
+    <main class="referee-shell">
+      <div id="app"></div>
+    </main>
+
+    <script type="module" src="./js/referee.js"></script>
+  </body>
+</html>

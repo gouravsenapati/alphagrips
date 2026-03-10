@@ -34,7 +34,23 @@ app.get("/", (req,res)=>{
 app.get("/health",(req,res)=>{
   res.send("OK");
 });
+/* ======================
+ACADEMIES
+====================== */
 
+app.get("/academies", auth, async (req, res) => {
+
+  const { data, error } = await supabase
+    .from("academies")
+    .select("id,name")
+    .order("name");
+
+  if (error)
+    return res.status(500).json({ error: error.message });
+
+  res.json(data);
+
+});
 
 /* ======================
    SUPABASE

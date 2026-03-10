@@ -1,0 +1,294 @@
+.parent-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.parent-section-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.parent-section-tab {
+  border: 1px solid rgba(38, 56, 110, 0.16);
+  border-radius: 999px;
+  padding: 11px 18px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.parent-section-tab.active,
+.parent-section-tab:hover {
+  background: rgba(38, 56, 110, 0.12);
+  border-color: rgba(38, 56, 110, 0.3);
+}
+
+.parent-tab {
+  border: 1px solid rgba(38, 56, 110, 0.16);
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--ink);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.parent-tab.active,
+.parent-tab:hover {
+  background: rgba(38, 56, 110, 0.1);
+  border-color: rgba(38, 56, 110, 0.32);
+}
+
+.parent-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.parent-overview-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.parent-matrix-view {
+  display: grid;
+  gap: 16px;
+}
+
+.parent-overview-card {
+  display: grid;
+  gap: 10px;
+}
+
+.child-profile {
+  display: grid;
+  gap: 6px;
+}
+
+.child-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.section-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.summary-strip.compact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.summary-strip.compact > div {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(217, 222, 234, 0.9);
+}
+
+.summary-strip.compact span {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.summary-strip.compact strong {
+  font-size: 1.1rem;
+}
+
+.parent-list {
+  display: grid;
+  gap: 12px;
+}
+
+.parent-list-item {
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(217, 222, 234, 0.9);
+  display: grid;
+  gap: 8px;
+}
+
+.parent-list-item-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.parent-list-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.invoice-card {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(217, 222, 234, 0.9);
+  display: grid;
+  gap: 14px;
+}
+
+.invoice-card-head,
+.invoice-card-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.invoice-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.invoice-values > div {
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: rgba(246, 239, 230, 0.8);
+}
+
+.invoice-values span {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.invoice-values strong {
+  font-size: 1rem;
+}
+
+.invoice-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.fee-status-card {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(217, 222, 234, 0.9);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.fee-status-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.fee-status-card h4 {
+  margin: 6px 0 0;
+  font-size: 1.2rem;
+}
+
+.fee-status-paid {
+  border-color: rgba(38, 142, 89, 0.25);
+  background: linear-gradient(180deg, rgba(235, 250, 240, 0.95), rgba(255, 255, 255, 0.88));
+}
+
+.fee-status-due {
+  border-color: rgba(230, 153, 44, 0.28);
+  background: linear-gradient(180deg, rgba(255, 247, 229, 0.95), rgba(255, 255, 255, 0.88));
+}
+
+.fee-status-overdue {
+  border-color: rgba(206, 74, 74, 0.26);
+  background: linear-gradient(180deg, rgba(255, 236, 236, 0.95), rgba(255, 255, 255, 0.88));
+}
+
+.pill-fee-paid {
+  background: rgba(38, 142, 89, 0.14);
+  color: #1f6d43;
+}
+
+.pill-fee-due {
+  background: rgba(230, 153, 44, 0.14);
+  color: #9a5d00;
+}
+
+.pill-fee-overdue {
+  background: rgba(206, 74, 74, 0.14);
+  color: #a33131;
+}
+
+.pill-fee-neutral {
+  background: rgba(38, 56, 110, 0.08);
+  color: var(--ink);
+}
+
+.parent-empty {
+  padding: 30px 22px;
+  text-align: center;
+}
+
+.receipt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(38, 56, 110, 0.08);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.parent-matrix-panel {
+  overflow-x: auto;
+}
+
+.parent-match-cell {
+  cursor: default;
+  pointer-events: none;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.parent-match-cell:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 1100px) {
+  .parent-grid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.8fr);
+    align-items: start;
+  }
+
+  .parent-overview-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .section-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}

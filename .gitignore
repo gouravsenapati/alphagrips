@@ -1,0 +1,8 @@
+node_modules/
+logs/
+.env
+backend-start.log
+backend-start.err
+*.log
+*.err
+server@*

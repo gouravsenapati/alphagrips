@@ -1,0 +1,65 @@
+.referee-body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(240, 128, 14, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(248, 244, 236, 0.96), #f7f4ee 48%, #efe8db 100%);
+}
+
+.referee-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.referee-shell {
+  padding: 24px;
+}
+
+.referee-page-header {
+  margin-bottom: 18px;
+}
+
+.referee-toolbar {
+  align-self: start;
+}
+
+.referee-toolbar select {
+  min-width: 220px;
+}
+
+.referee-stats-grid {
+  margin-bottom: 18px;
+}
+
+.referee-court-grid {
+  margin-top: 12px;
+}
+
+.referee-body .meta-line {
+  margin-top: 10px;
+}
+
+.referee-body .panel + .panel {
+  margin-top: 18px;
+}
+
+.court-referee-line {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .referee-shell {
+    padding: 18px;
+  }
+
+  .referee-toolbar {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .referee-toolbar select {
+    min-width: 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlphaGrips Draw Sheet</title>
+    <link rel="stylesheet" href="./css/tournament-draw-sheet.css" />
+    <script>
+      (function () {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          window.location.replace("/Public/login.html");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <main id="drawSheetApp"></main>
+    <script type="module" src="./js/tournamentDrawSheet.js"></script>
+  </body>
+</html>

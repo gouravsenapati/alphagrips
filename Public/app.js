@@ -1,7 +1,7 @@
 const API =
-  location.hostname === "localhost"
-    ? "http://localhost:3000"
-    : "https://alphagrips-production.up.railway.app";
+  location.hostname === "localhost" || location.hostname === "127.0.0.1"
+    ? "http://localhost:5000/api"
+    : `${location.origin}/api`;
 
 // ============================
 // SIMPLE ROUTER SYSTEM
@@ -101,7 +101,7 @@ async function safeFetch(url, options = {}) {
   if (res.status === 401) {
     localStorage.clear();
     alert("Session expired. Please login again.");
-    window.location.href = "login.html";
+    window.location.href = "/Public/login.html";
     throw new Error("Unauthorized");
   }
 
@@ -735,17 +735,16 @@ function changePage(page) {
   renderPlayersTable();
 }
 
-function enableEditPlayer(id) {
+/*function enableEditPlayer(id) {
   document.getElementById(`name_${id}`).disabled = false;
   document.getElementById(`cat_${id}`).disabled = false;
 
   document.getElementById(`edit_${id}`).style.display = "none";
   document.getElementById(`save_${id}`).style.display = "inline-block";
   document.getElementById(`cancel_${id}`).style.display = "inline-block";
-}
+}*/
 
-
-// Save player edits
+/* Save player edits
 async function savePlayerEdit(id) {
   const name = document.getElementById(`name_${id}`).value;
   const categoryId = document.getElementById(`cat_${id}`).value;
@@ -765,7 +764,7 @@ async function savePlayerEdit(id) {
 
   await renderPlayersModule();
 }
-
+*/
 
 // Load categories into the Create Player dropdown
 async function loadCategoriesDropdown() {
@@ -1631,7 +1630,7 @@ async function init() {
   // 1️⃣ Check authentication
   const token = getToken();
   if (!token) {
-    window.location.href = "login.html";
+    window.location.href = "/Public/login.html";
     return;
   }
 
@@ -1645,11 +1644,13 @@ async function init() {
 
   // 4️⃣ Attach logout handler
   const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", function () {
-      localStorage.clear();
-      window.location.href = "login.html";
-    });
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", function () {
+    localStorage.clear();
+    window.location.href = "/Public/index.html";
+  });
+}
   }
 
   // 5️⃣ Load default module

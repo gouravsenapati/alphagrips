@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlphaGrips Tournament Console</title>
+    <link rel="stylesheet" href="../dashboard/css/dashboard.css" />
+    <script>
+      (function () {
+        const token = localStorage.getItem("token");
+        const isParentRole = function (roleValue) {
+          return String(roleValue || "").toLowerCase().startsWith("parent");
+        };
+        const isParentRoleId = function (roleIdValue) {
+          return String(roleIdValue || "") === "4";
+        };
+        const decodeRoleFromToken = function (jwtToken) {
+          try {
+            const payload = jwtToken.split(".")[1];
+            const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
+            const decoded = JSON.parse(atob(normalized));
+            return {
+              role: String(decoded.role || decoded.role_name || "").toLowerCase(),
+              roleId: String(decoded.role_id || "")
+            };
+          } catch (error) {
+            return { role: "", roleId: "" };
+          }
+        };
+        const tokenMeta = decodeRoleFromToken(token || "");
+        const role = tokenMeta.role || String(localStorage.getItem("role") || "").toLowerCase();
+        const roleId = tokenMeta.roleId || String(localStorage.getItem("role_id") || "");
+
+        if (!token) {
+          window.location.replace("/Public/login.html");
+          return;
+        }
+
+        if (isParentRole(role) || isParentRoleId(roleId)) {
+          window.location.replace("/Public/parent/index.html");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="layout">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button onclick="toggleSidebar()" class="menu-btn" aria-label="Toggle navigation">
+            ☰
+          </button>
+          <div>
+            <p class="brand-kicker">AlphaGrips</p>
+            <h1>Tournament Console</h1>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a class="btn btn-ghost" href="/Public/dashboard/index.html#dashboard">Main Dashboard</a>
+          <button onclick="logout()" class="btn btn-ghost">Logout</button>
+        </div>
+      </header>
+
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <p class="brand-kicker">Tournament Ops</p>
+          <strong>AlphaGrips</strong>
+        </div>
+        <nav>
+          <a href="#tournaments" data-route="tournaments">Tournament Overview</a>
+          <a href="#tournament-setup" data-route="tournament-setup">Tournament Setup</a>
+          <a href="#tournament-brackets" data-route="tournament-brackets">Brackets</a>
+          <a href="#tournament-operations" data-route="tournament-operations">Operations Desk</a>
+          <a href="#tournament-courts" data-route="tournament-courts">Court Monitor</a>
+          <a href="#tournament-scoring" data-route="tournament-scoring">Live Scoring</a>
+          <a href="#tournament-results" data-route="tournament-results">Results Center</a>
+          <a href="/Public/tournament.html#tournamentList">Tournament Hub</a>
+        </nav>
+      </aside>
+
+      <main id="app"></main>
+    </div>
+
+    <script type="module" src="./js/router.js"></script>
+  </body>
+</html>

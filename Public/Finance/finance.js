@@ -17,31 +17,34 @@ async function initFinance() {
 }
 
 function loadFinanceTab(tab) {
-    console.log("Tab clicked:", tab);
 
-  const container = document.getElementById("financeContent");
+  console.log("Tab clicked:", tab);
 
   switch (tab) {
 
     case "dashboard":
-  loadFinanceDashboard();
-  break;
+      loadFinanceDashboard();
+      break;
 
     case "ledger":
-  loadFinanceLedger();
-  break;
+      loadFinanceLedger();
+      break;
 
     case "add-payment":
-  loadAddPaymentUI();
-  break;
+      loadAddPaymentUI();
+      break;
 
     case "history":
-  loadPaymentHistory();
-  break;
+      loadPaymentHistory();
+      break;
 
     case "fees":
-  loadFeeStructure();
-  break;
+      loadFeeStructure();
+      break;
+
+    case "player-fees":
+      renderPlayerFeeModule();
+      break;
   }
 }
 
